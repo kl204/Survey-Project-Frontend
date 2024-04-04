@@ -1,0 +1,37 @@
+.modal {
+  /* background-color: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  width: 80vw;
+  max-width: 375px;
+  height: 80vh;
+  max-height: 800px;
+  padding: 16px;
+  outline: 0;
+  border-radius: 8px;
+  text-align: center; */
+}
+
+@media (max-width: 600px) {
+  /* .modal {
+    max-width: 330px;
+    max-height: 620px;
+  } */
+}
+
+@media (min-height: 601px) and (max-height: 800px) {
+  /* .modal {
+    height: 85vh;
+  } */
+}
+
+.titleStyle {
+  /* font-family: 'nanumsquare';
+  font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
+  text-overflow: 'ellipsis';
+  justify-content: 'center'; */
+}
+
+.modal-scroll-box img {
+  /* width: 100%;
+  height: auto; */
+}
