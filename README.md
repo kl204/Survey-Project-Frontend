@@ -1,9 +1,13 @@
 # ✅ 설문조사 프로젝트 [SurveyPlus]
 <br>
-<img src="https://github.com/kl204/law-proj-backend/assets/86181292/099acc80-b20f-4b94-9671-0c665774f93c" width="430">
-<img src="https://github.com/kl204/law-proj-backend/assets/86181292/200a3d68-b516-4846-b587-43debe83d0ee" width="430">
+<img src="https://github.com/kl204/law-proj-backend/assets/86181292/099acc80-b20f-4b94-9671-0c665774f93c" width="400">
+<img src="https://github.com/kl204/law-proj-backend/assets/86181292/200a3d68-b516-4846-b587-43debe83d0ee" width="400">
 <br><br>
-배포주소 : 
+
+#### 프로젝트 배포 활성화를 위한 클론 레포지토리입니다.
+#### 개인적인 리팩토링과 성능개선 요소가 포함되어있습니다.
+### Deploy Address : 
+### Origin Organization Path : https://github.com/1Jo-Survey-Management
 
 ## 😺 프로젝트 개요
 <img src="https://github.com/kl204/Survey-Project-Backend/assets/86181292/937914ea-4baf-49c7-89d4-db4acd467ca2">
