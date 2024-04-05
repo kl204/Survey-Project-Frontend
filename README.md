@@ -1,7 +1,7 @@
 # ✅ 설문조사 프로젝트 [SurveyPlus]
 <br>
-<img src="https://github.com/kl204/law-proj-backend/assets/86181292/099acc80-b20f-4b94-9671-0c665774f93c" width="450">
-<img src="https://github.com/kl204/law-proj-backend/assets/86181292/200a3d68-b516-4846-b587-43debe83d0ee" width="450">
+<img src="https://github.com/kl204/law-proj-backend/assets/86181292/099acc80-b20f-4b94-9671-0c665774f93c" width="430">
+<img src="https://github.com/kl204/law-proj-backend/assets/86181292/200a3d68-b516-4846-b587-43debe83d0ee" width="430">
 <br><br>
 배포주소 : 
 
