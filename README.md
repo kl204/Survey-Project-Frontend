@@ -7,7 +7,6 @@
 #### 프로젝트 배포 활성화를 위한 클론 레포지토리입니다.
 #### 개인적인 리팩토링과 성능개선 요소가 포함되어있습니다.
 ### Deploy Address : 
-### Origin Organization Path : https://github.com/1Jo-Survey-Management
 
 ## 😺 프로젝트 개요
 <img src="https://github.com/kl204/Survey-Project-Backend/assets/86181292/937914ea-4baf-49c7-89d4-db4acd467ca2">
