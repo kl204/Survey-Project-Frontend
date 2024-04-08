@@ -161,7 +161,7 @@ function Header() {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            {loginCheck === true ? '' : <MenuIcon />}
+            {loginCheck === true ? <MenuIcon /> : ''}
           </IconButton>
 
           <React.Fragment key={ANCHOR_TYPE}>
