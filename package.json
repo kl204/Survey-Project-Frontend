@@ -108,7 +108,6 @@
     "https://survey-project-gyu.s3.amazonaws.com/"
   ],
   "main": "index.js",
-  "repository": "https://github.com/1Jo-Survey-Management/survey-management-frontend.git",
   "author": "PUO <86181292+kl204@users.noreply.github.com>",
   "license": "MIT"
 }
