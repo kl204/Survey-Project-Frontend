@@ -53,11 +53,9 @@ export default function AttendModalButtonGroup({
 
   return (
     <div css={styles.modalButtonGroupBox}>
-      <h4>
-        {selectedCard.userNo}
-        {numUser()}
-        {selectedCard.openStatusName}
-      </h4>
+      <Alert severity="success" css={styles.alertArea}>
+        본인이 작성한 설문입니다.
+      </Alert>
       {/* 참여하기 제한 조건 */}
       {selectedCard?.attendCheckList &&
         selectedCard.attendCheckList.includes(false) && (
