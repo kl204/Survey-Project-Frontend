@@ -161,7 +161,7 @@ function Header() {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            {hasProperLogin == '1' ? '' : <MenuIcon />}
+            {hasProperLogin === '1' ? '' : <MenuIcon />}
           </IconButton>
 
           <React.Fragment key={ANCHOR_TYPE}>
@@ -184,7 +184,7 @@ function Header() {
             />
           </div>
           <div css={styles.loginout}>
-            {hasProperLogin == '1' ? (
+            {hasProperLogin === '1' ? (
               <StyledButton
                 type="button"
                 onClick={login}
