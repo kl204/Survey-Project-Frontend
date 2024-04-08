@@ -242,8 +242,6 @@ function WeeklySurvey({ cardList }: CardDataListProps) {
                                 />
                               ))}
                             </Stack>
-
-                            <h2>테스트!!</h2>
                           </CardContent>
                         </CardActionArea>
                       </Card>

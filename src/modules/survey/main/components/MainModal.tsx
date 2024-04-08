@@ -353,7 +353,7 @@ export default function MainModal({
               selectedCard={selectedCard}
               showSwalAlert={showSwalAlert}
             />
-
+            <h2>여기겠네</h2>
             {selectedCard.surveyStatusName === SURVEY_STATUS_DEADLINE && (
               <ClosingModalButtoonGroup
                 numUser={numUser}
