@@ -28,7 +28,7 @@ import AttendModalButtonGroup from './AttendModalButtonGroup';
 import ClosingModalButtoonGroup from './ClosingModalButtonGroup';
 import {
   SURVEY_STATUS_DEADLINE,
-  SURVEY_STATUS_PROGRESS,
+  // SURVEY_STATUS_PROGRESS,
   tagColor,
 } from '../constant/MainConstant';
 
