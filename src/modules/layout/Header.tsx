@@ -184,7 +184,7 @@ function Header() {
             />
           </div>
           <div css={styles.loginout}>
-            {hasProperLogin != '1' ? (
+            {hasProperLogin == '1' ? (
               <StyledButton
                 type="button"
                 onClick={login}
