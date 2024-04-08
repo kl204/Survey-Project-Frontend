@@ -26,7 +26,11 @@ import Sharing from '../../../utils/Sharing';
 import { ModalProps } from '../types/MainType';
 import AttendModalButtonGroup from './AttendModalButtonGroup';
 import ClosingModalButtoonGroup from './ClosingModalButtonGroup';
-import { tagColor } from '../constant/MainConstant';
+import {
+  SURVEY_STATUS_DEADLINE,
+  SURVEY_STATUS_PROGRESS,
+  tagColor,
+} from '../constant/MainConstant';
 
 const fontFamily = 'nanumsquare';
 
@@ -344,15 +348,13 @@ export default function MainModal({
             </Card>
             <Divider css={styles.modalDivider} />
 
-            {true && (
-              <AttendModalButtonGroup
-                numUser={numUser}
-                selectedCard={selectedCard}
-                showSwalAlert={showSwalAlert}
-              />
-            )}
+            <AttendModalButtonGroup
+              numUser={numUser}
+              selectedCard={selectedCard}
+              showSwalAlert={showSwalAlert}
+            />
 
-            {selectedCard.surveyStatusName === ' 마감 ' && (
+            {selectedCard.surveyStatusName === SURVEY_STATUS_DEADLINE && (
               <ClosingModalButtoonGroup
                 numUser={numUser}
                 selectedCard={selectedCard}
