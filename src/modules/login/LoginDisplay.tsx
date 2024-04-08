@@ -286,10 +286,10 @@ function LoginDisplay() {
             Nice to See you Again
           </Typography>
           <Button sx={guestLogin} onClick={test1}>
-            참여자로 로그인
+            작성자로 로그인
           </Button>
           <Button sx={guestLogin} onClick={test2}>
-            작성자로 로그인
+            참여자로 로그인
           </Button>
         </Box>
       </Box>
