@@ -91,6 +91,7 @@ function Main() {
   };
 
   useEffect(() => {
+    // test용 유저 추가
     localStorage.setItem('userNo', '1');
 
     fetchWeeklySurveyData();

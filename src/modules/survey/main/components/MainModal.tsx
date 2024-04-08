@@ -348,7 +348,7 @@ export default function MainModal({
             </Card>
             <Divider css={styles.modalDivider} />
 
-            {selectedCard.surveyStatusName === SURVEY_STATUS_PROGRESS && (
+            {selectedCard.surveyStatusName === '진행' && (
               <AttendModalButtonGroup
                 numUser={numUser}
                 selectedCard={selectedCard}
