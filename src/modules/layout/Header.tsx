@@ -127,7 +127,7 @@ function Header() {
    * @returns {boolean} 로그인 상태 여부
    * @author 김선규
    */
-  const properLogin = (): boolean => true;
+  const hasProperLogin = localStorage.getItem('userNo');
 
   // const hasProperLogin = localStorage.getItem('userNickname');
 
@@ -161,7 +161,7 @@ function Header() {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            {!properLogin() ? '' : <MenuIcon />}
+            {hasProperLogin == '1' ? '' : <MenuIcon />}
           </IconButton>
 
           <React.Fragment key={ANCHOR_TYPE}>
@@ -184,7 +184,7 @@ function Header() {
             />
           </div>
           <div css={styles.loginout}>
-            {!properLogin() ? (
+            {hasProperLogin != '1' ? (
               <StyledButton
                 type="button"
                 onClick={login}
