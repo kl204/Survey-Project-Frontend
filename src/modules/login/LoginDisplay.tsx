@@ -215,7 +215,6 @@ function LoginDisplay() {
 
   const test1 = () => {
     setIsLoading(true);
-    localStorage.setItem('userNo', '1');
     navigate('/survey/main');
   };
 
