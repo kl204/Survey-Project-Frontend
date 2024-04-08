@@ -219,12 +219,6 @@ function LoginDisplay() {
     navigate('/survey/main');
   };
 
-  const test2 = () => {
-    setIsLoading(true);
-    localStorage.setItem('userNo', '2');
-    navigate('/survey/main');
-  };
-
   if (isLoading) {
     return (
       <Backdrop
@@ -286,10 +280,7 @@ function LoginDisplay() {
             Nice to See you Again
           </Typography>
           <Button sx={guestLogin} onClick={test1}>
-            작성자로 로그인
-          </Button>
-          <Button sx={guestLogin} onClick={test2}>
-            참여자로 로그인
+            비회원으로 로그인
           </Button>
         </Box>
       </Box>
