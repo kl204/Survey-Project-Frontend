@@ -1045,26 +1045,6 @@ function Mypage() {
                     삭제하기
                   </Button>
                 )}
-                {selectedCard && selectedCard.surveyStatusNo === 2 && (
-                  <Button
-                    onClick={() => handleDeleteClick()}
-                    sx={{
-                      width: '100%',
-                      marginBottom: '8px',
-                      backgroundColor: '#ebebeb',
-                      '&:hover': {
-                        backgroundColor: 'gray',
-                        color: 'white',
-                        fontWeight: '900',
-                        fontSize: '14px',
-                      },
-                      color: 'black',
-                      fontWeight: '600',
-                    }}
-                  >
-                    삭제하기
-                  </Button>
-                )}
               </div>
             </Box>
           </div>
