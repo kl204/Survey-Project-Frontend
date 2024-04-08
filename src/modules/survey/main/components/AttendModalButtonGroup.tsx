@@ -53,9 +53,6 @@ export default function AttendModalButtonGroup({
 
   return (
     <div css={styles.modalButtonGroupBox}>
-      <Alert severity="success" css={styles.alertArea}>
-        본인이 작성한 설문입니다.
-      </Alert>
       {/* 참여하기 제한 조건 */}
       {selectedCard?.attendCheckList &&
         selectedCard.attendCheckList.includes(false) && (
@@ -65,13 +62,13 @@ export default function AttendModalButtonGroup({
         )}
 
       {selectedCard?.userNo === numUser() &&
-        selectedCard?.openStatusName === '전체 공개' && (
+        selectedCard?.openStatusName === '전체공개' && (
           <Alert severity="success" css={styles.alertArea}>
             본인이 작성한 설문입니다.
           </Alert>
         )}
       {selectedCard?.userNo === numUser() &&
-        selectedCard?.openStatusName === '회원 공개' && (
+        selectedCard?.openStatusName === '회원공개' && (
           <Alert severity="success" css={styles.alertArea}>
             본인이 작성한 설문입니다.
           </Alert>
@@ -88,24 +85,24 @@ export default function AttendModalButtonGroup({
           </Alert>
         ))}
 
-      {selectedCard?.openStatusName === '회원 공개' && numUser() === null && (
+      {selectedCard?.openStatusName === '회원공개' && numUser() === null && (
         <Alert severity="error" css={styles.alertArea}>
           통계를 보시려면 로그인해주세요.
         </Alert>
       )}
 
-      {numUser() === null && selectedCard?.openStatusName === '전체 공개' && (
+      {numUser() === null && selectedCard?.openStatusName === '전체공개' && (
         <Alert severity="error" css={styles.alertArea}>
           참여를 원하시면 로그인해주세요
         </Alert>
       )}
       {/* 통계보기, 참여하기 버튼 */}
       {(!selectedCard?.openStatusName ||
-        selectedCard?.openStatusName === '전체 공개' ||
+        selectedCard?.openStatusName === '전체공개' ||
         (selectedCard?.openStatusName === '비공개' &&
           numUser() !== null &&
           numUser() === selectedCard?.userNo) ||
-        (selectedCard?.openStatusName === '회원 공개' &&
+        (selectedCard?.openStatusName === '회원공개' &&
           numUser() !== null)) && (
         <Button
           onClick={() => {
