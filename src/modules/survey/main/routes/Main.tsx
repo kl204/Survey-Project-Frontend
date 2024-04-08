@@ -91,6 +91,8 @@ function Main() {
   };
 
   useEffect(() => {
+    localStorage.setItem('userNo', '1');
+
     fetchWeeklySurveyData();
     fetchRecentSurveyData();
     fetchClosingSurveyData();
