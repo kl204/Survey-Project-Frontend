@@ -1,8 +1,5 @@
 import { SwiperOptions } from 'swiper/types/swiper-options';
 
-export const SURVEY_STATUS_PROGRESS = '진행';
-export const SURVEY_STATUS_DEADLINE = '마감';
-
 export const tagColor = (tagName: string) => {
   switch (tagName) {
     case '공지':
