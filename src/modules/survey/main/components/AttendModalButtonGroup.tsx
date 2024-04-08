@@ -54,11 +54,9 @@ export default function AttendModalButtonGroup({
   return (
     <div css={styles.modalButtonGroupBox}>
       <h4>
-        {selectedCard.userNo +
-          ' : ' +
-          numUser() +
-          '\n' +
-          selectedCard.openStatusName}
+        {selectedCard.userNo}
+        {numUser()}
+        {selectedCard.openStatusName}
       </h4>
       {/* 참여하기 제한 조건 */}
       {selectedCard?.attendCheckList &&
