@@ -215,6 +215,7 @@ function LoginDisplay() {
 
   const goLogin = () => {
     setIsLoading(true);
+    localStorage.setItem('userNo', '99');
     navigate('/survey/main');
   };
 
@@ -279,7 +280,10 @@ function LoginDisplay() {
             Nice to See you Again
           </Typography>
           <Button sx={guestLogin} onClick={goLogin}>
-            비회원으로 로그인
+            작성자로 로그인
+          </Button>
+          <Button sx={guestLogin} onClick={goLogin}>
+            참여자로 로그인
           </Button>
         </Box>
       </Box>
