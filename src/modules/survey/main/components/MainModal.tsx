@@ -28,6 +28,7 @@ import AttendModalButtonGroup from './AttendModalButtonGroup';
 import ClosingModalButtoonGroup from './ClosingModalButtonGroup';
 import {
   SURVEY_STATUS_DEADLINE,
+  SURVEY_STATUS_PROGRESS,
   // SURVEY_STATUS_PROGRESS,
   tagColor,
 } from '../constant/MainConstant';
@@ -348,12 +349,14 @@ export default function MainModal({
             </Card>
             <Divider css={styles.modalDivider} />
 
-            <AttendModalButtonGroup
-              numUser={numUser}
-              selectedCard={selectedCard}
-              showSwalAlert={showSwalAlert}
-            />
-            <h2>여기겠네</h2>
+            {selectedCard.surveyStatusName === SURVEY_STATUS_PROGRESS && (
+              <AttendModalButtonGroup
+                numUser={numUser}
+                selectedCard={selectedCard}
+                showSwalAlert={showSwalAlert}
+              />
+            )}
+
             {selectedCard.surveyStatusName === SURVEY_STATUS_DEADLINE && (
               <ClosingModalButtoonGroup
                 numUser={numUser}
