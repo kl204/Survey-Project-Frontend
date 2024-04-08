@@ -131,11 +131,11 @@ function Header() {
 
   // const hasProperLogin = localStorage.getItem('userNickname');
 
-  // let loginCheck = false;
+  let loginCheck = false;
 
-  // if (hasProperLogin !== null) {
-  //   loginCheck = true;
-  // }
+  if (hasProperLogin !== '1') {
+    loginCheck = true;
+  }
 
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
 
@@ -161,7 +161,7 @@ function Header() {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            {hasProperLogin === '1' ? '' : <MenuIcon />}
+            {loginCheck !== true ? '' : <MenuIcon />}
           </IconButton>
 
           <React.Fragment key={ANCHOR_TYPE}>
@@ -184,7 +184,7 @@ function Header() {
             />
           </div>
           <div css={styles.loginout}>
-            {hasProperLogin === '1' ? (
+            {loginCheck === true ? (
               <StyledButton
                 type="button"
                 onClick={login}
