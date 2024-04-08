@@ -16,6 +16,7 @@ function LoginNaver() {
   const handleOAuthLogin = () => {
     // const authorizationUrl = `${process.env.REACT_APP_NAVER_OAUTH_BASE_URL}?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${process.env.REACT_APP_NAVER_STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
     // window.location.href = authorizationUrl;
+    localStorage.setItem('userNo', '1');
 
     navigate('/');
   };
