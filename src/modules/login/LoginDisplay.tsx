@@ -76,158 +76,160 @@ function LoginDisplay() {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
-  const cancelSubmit = async () => {
-    const userNo = localStorage.getItem('userNo');
-    const userNickname = localStorage.getItem('userNickname');
+  // const cancelSubmit = async () => {
+  //   const userNo = localStorage.getItem('userNo');
+  //   const userNickname = localStorage.getItem('userNickname');
 
-    setIsLoading(true);
+  //   setIsLoading(true);
 
-    if (userNo !== '' && userNickname === '') {
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/oauthLogin/cancel`,
-          {
-            params: {
-              userNo,
-            },
-          }
-        );
+  //   if (userNo !== '' && userNickname === '') {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.REACT_APP_BASE_URL}/api/oauthLogin/cancel`,
+  //         {
+  //           params: {
+  //             userNo,
+  //           },
+  //         }
+  //       );
 
-        const respData = response.data;
-        if (respData === '') {
-          console.error('API 요청 실패');
-          return;
-        }
-      } catch (error) {
-        console.error(error);
-      }
+  //       const respData = response.data;
+  //       if (respData === '') {
+  //         console.error('API 요청 실패');
+  //         return;
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
 
-      itemsToRemove.push('accessCode');
-      itemsToRemove.forEach((item) => localStorage.removeItem(item));
-    }
-    setIsLoading(false);
-  };
+  //     itemsToRemove.push('accessCode');
+  //     itemsToRemove.forEach((item) => localStorage.removeItem(item));
+  //   }
+  //   setIsLoading(false);
+  // };
 
-  useEffect(() => {
-    itemsToRemove.forEach((item) => localStorage.removeItem(item));
+  // useEffect(() => {
+  // itemsToRemove.forEach((item) => localStorage.removeItem(item));
 
-    const localStorageAccessToken = localStorage.getItem('accessToken');
-    const searchParams = new URLSearchParams(location.search);
-    const redirectUri = `${process.env.REACT_APP_BASE_URL}/api/oauthLogin/oauth2/code/naver`;
+  // const localStorageAccessToken = localStorage.getItem('accessToken');
+  // const searchParams = new URLSearchParams(location.search);
+  // const redirectUri = `${process.env.REACT_APP_BASE_URL}/oauth2/authorization/naver`;
 
-    const accessCode = searchParams.get('code');
-    const duplicateAccessCode = localStorage.getItem('accessCode');
+  // console.log('redirectUri : ' + redirectUri);
 
-    const accessCodeDuplicateCheck = () => {
-      let duplicatedCheck = false;
-      if (duplicateAccessCode !== accessCode) {
-        duplicatedCheck = true;
-      }
+  // const accessCode = searchParams.get('code');
+  // const duplicateAccessCode = localStorage.getItem('accessCode');
 
-      return duplicatedCheck;
-    };
+  // const accessCodeDuplicateCheck = () => {
+  //   let duplicatedCheck = false;
+  //   if (duplicateAccessCode !== accessCode) {
+  //     duplicatedCheck = true;
+  //   }
 
-    const loginLogin = async () => {
-      if (accessCode && accessCodeDuplicateCheck()) {
-        setIsLoading(true);
+  //   return duplicatedCheck;
+  // };
 
-        await axios
-          .get(redirectUri, {
-            params: {
-              code: accessCode,
-              state: 'STATE_STRING',
-            },
-          })
-          .then((response) => {
-            const { userNo, accessToken, userImage, userNickname, expiresIn } =
-              response.data.content;
+  // const loginLogin = async () => {
+  //   if (accessCode && accessCodeDuplicateCheck()) {
+  //     setIsLoading(true);
 
-            localStorage.setItem('accessCode', accessCode);
-            localStorage.setItem('userNo', userNo);
-            localStorage.setItem('userNickname', userNickname);
-            localStorage.setItem('userImage', userImage);
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('expiresIn', expiresIn);
+  //     await axios
+  //       .get(redirectUri, {
+  //         params: {
+  //           code: accessCode,
+  //           state: 'STATE_STRING',
+  //         },
+  //       })
+  //       .then((response) => {
+  //         const { userNo, accessToken, userImage, userNickname, expiresIn } =
+  //           response.data.content;
 
-            if (userNo != null && userNickname != null) {
-              if (
-                localStorageAccessToken == null ||
-                accessToken !== localStorageAccessToken
-              ) {
-                localStorage.setItem('userNo', userNo);
-                localStorage.setItem('userNickname', userNickname);
-                localStorage.setItem('userImage', userImage);
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('expiresIn', expiresIn);
+  //         localStorage.setItem('accessCode', accessCode);
+  //         localStorage.setItem('userNo', userNo);
+  //         localStorage.setItem('userNickname', userNickname);
+  //         localStorage.setItem('userImage', userImage);
+  //         localStorage.setItem('accessToken', accessToken);
+  //         localStorage.setItem('expiresIn', expiresIn);
 
-                axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  //         if (userNo != null && userNickname != null) {
+  //           if (
+  //             localStorageAccessToken == null ||
+  //             accessToken !== localStorageAccessToken
+  //           ) {
+  //             localStorage.setItem('userNo', userNo);
+  //             localStorage.setItem('userNickname', userNickname);
+  //             localStorage.setItem('userImage', userImage);
+  //             localStorage.setItem('accessToken', accessToken);
+  //             localStorage.setItem('expiresIn', expiresIn);
 
-                navigate('/survey/main');
-                return;
-              }
+  //             axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
-              if (expiresIn) {
-                localStorage.setItem('userNo', userNo);
-                localStorage.setItem('userNickname', userNickname);
-                localStorage.setItem('userImage', userImage);
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('expiresIn', expiresIn);
-              }
-              navigate('/survey/main');
+  //             navigate('/survey/main');
+  //             return;
+  //           }
 
-              if (accessToken === localStorageAccessToken) {
-                axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-                navigate('/survey/main');
-              } else {
-                itemsToRemove.forEach((item) => localStorage.removeItem(item));
+  //           if (expiresIn) {
+  //             localStorage.setItem('userNo', userNo);
+  //             localStorage.setItem('userNickname', userNickname);
+  //             localStorage.setItem('userImage', userImage);
+  //             localStorage.setItem('accessToken', accessToken);
+  //             localStorage.setItem('expiresIn', expiresIn);
+  //           }
+  //           navigate('/survey/main');
 
-                navigate('/login');
-              }
-            }
+  //           if (accessToken === localStorageAccessToken) {
+  //             axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  //             navigate('/survey/main');
+  //           } else {
+  //             itemsToRemove.forEach((item) => localStorage.removeItem(item));
 
-            if (userNo != null && !userNickname) {
-              localStorage.setItem('userNo', userNo);
-              localStorage.setItem('userNickname', userNickname);
-              localStorage.setItem('userImage', userImage);
-              localStorage.setItem('accessToken', accessToken);
-              localStorage.setItem('expiresIn', expiresIn);
+  //             navigate('/login');
+  //           }
+  //         }
 
-              axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  //         if (userNo != null && !userNickname) {
+  //           localStorage.setItem('userNo', userNo);
+  //           localStorage.setItem('userNickname', userNickname);
+  //           localStorage.setItem('userImage', userImage);
+  //           localStorage.setItem('accessToken', accessToken);
+  //           localStorage.setItem('expiresIn', expiresIn);
 
-              setShowModal(true);
-            }
+  //           axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            setIsLoading(true);
-            console.error('Error : ', error);
-          });
-      } else {
-        setIsLoading(true);
-        cancelSubmit();
-        navigate('/login');
-      }
-    };
+  //           setShowModal(true);
+  //         }
 
-    loginLogin();
-  }, []);
+  //         setIsLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         setIsLoading(true);
+  //         console.error('Error : ', error);
+  //       });
+  //   } else {
+  //     setIsLoading(true);
+  //     cancelSubmit();
+  //     navigate('/login');
+  //   }
+  // };
+
+  // loginLogin();
+  // }, []);
 
   const test1 = () => {
     setIsLoading(true);
     navigate('/survey/main');
   };
 
-  if (isLoading) {
-    return (
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={isLoading}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Backdrop
+  //       sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+  //       open={isLoading}
+  //     >
+  //       <CircularProgress color="inherit" />
+  //     </Backdrop>
+  //   );
+  // }
 
   return (
     <Box sx={basicBox}>

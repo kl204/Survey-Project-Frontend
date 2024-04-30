@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /** @jsxImportSource @emotion/react */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,6 +12,7 @@ import { Drawer, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../../global.css';
 import Menu from './Menu';
+import Cookies from 'js-cookie';
 
 import axios from '../login/components/customApi';
 
@@ -79,15 +80,23 @@ const styles = {
 
 /**
  * 웹 애플리케이션의 헤더 컴포넌트입니다.
- * @author 김선규
  */
 function Header() {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
+  const [hasProperLogin, setHasProperLogin] = useState(false);
+
+  useEffect(() => {
+    const Authorization = Cookies.get('loginSession');
+    const isLoggedIn = Authorization !== undefined || Authorization !== null;
+
+    console.log('check : ' + isLoggedIn);
+    setHasProperLogin(isLoggedIn);
+  }, []);
+
   /**
    * 메인 페이지로 이동하는 함수
-   * @author 김선규
    */
   const goMain = () => {
     navigate('/');
@@ -103,39 +112,26 @@ function Header() {
     navigate('/login');
   };
 
-  /**
-   * 로그아웃을 수행하고 로그인 정보를 로컬 스토리지에서 제거하는 함수
-   * @authro 김선규
-   */
-  const logout = () => {
+  const logout = async () => {
     console.log('logout');
 
-    localStorage.removeItem('userNo');
-    localStorage.removeItem('userImage');
-    localStorage.removeItem('userNickname');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('expiresIn');
-    localStorage.removeItem('isMember');
+    try {
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/api/oauth2/logout`, {
+        withCredentials: true,
+      });
 
-    axios.defaults.headers.common.Authorization = null;
+      setHasProperLogin(false);
+    } catch (error) {
+      console.error(error);
+    }
 
-    navigate('/login');
+    navigate('/');
   };
 
   /**
    * 현재 사용자가 로그인 상태인지 확인하는 함수
    * @returns {boolean} 로그인 상태 여부
-   * @author 김선규
    */
-  const hasProperLogin = localStorage.getItem('userNo');
-
-  // const hasProperLogin = localStorage.getItem('userNickname');
-
-  let loginCheck = false;
-
-  if (hasProperLogin !== '1') {
-    loginCheck = true;
-  }
 
   const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
 
@@ -161,7 +157,7 @@ function Header() {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            {loginCheck === true ? '' : <MenuIcon />}
+            {hasProperLogin === false ? '' : <MenuIcon />}
           </IconButton>
 
           <React.Fragment key={ANCHOR_TYPE}>
@@ -184,7 +180,7 @@ function Header() {
             />
           </div>
           <div css={styles.loginout}>
-            {loginCheck === true ? (
+            {hasProperLogin === false ? (
               <StyledButton
                 type="button"
                 onClick={login}

@@ -6,6 +6,7 @@ import axios from 'axios';
  */
 const Api = axios.create({
   params: {},
+  withCredentials: true,
 });
 
 // // 요청 인터셉터

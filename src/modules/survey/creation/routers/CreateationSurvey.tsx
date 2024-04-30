@@ -193,7 +193,6 @@ function CreateationSurvey() {
    * 설문을 바로 게시하기 위해 제출하는 메서드 입니다.
    *
    * @returns 작성을 완료할 경우 main페이지로 리다이렉트
-   * @author 강명관
    */
   const handleSubmitSurveyPost = async () => {
     const isConfirmed = await Swal.fire({

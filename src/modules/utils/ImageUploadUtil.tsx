@@ -76,6 +76,7 @@ export async function imageUploadToS3(file: File): Promise<string | undefined> {
       headers: {
         Accept: 'application/json',
         Authorization: undefined,
+        withCredentials: true,
         'Content-Type': file.type,
       },
     });

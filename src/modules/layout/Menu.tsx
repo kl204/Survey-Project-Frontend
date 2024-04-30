@@ -81,22 +81,6 @@ function Menu({ toggleDrawer }: MenuProps) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const storageUserNo = localStorage.getItem(USER_NO);
-    // const storageUserImage = localStorage.getItem(USER_IMAGE);
-    // const storageUserNickname = localStorage.getItem(USER_NICKNAME);
-
-    const storageUserNo = '1';
-    const storageUserImage = '';
-    const storageUserNickname = '김선규';
-
-    setUserInfo({
-      userNo: storageUserNo !== null ? Number(storageUserNo) : null,
-      userImage: storageUserImage !== null ? storageUserImage : null,
-      userNickname: storageUserNickname !== null ? storageUserNickname : null,
-    });
-  }, []);
-
-  useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
@@ -108,6 +92,8 @@ function Menu({ toggleDrawer }: MenuProps) {
             userImage: response.data.userImage,
             userNickname: response.data.userNickname,
           });
+
+          console.log('로그인된 사용자 : ' + response.data.userNo);
         }
       } catch (error) {
         console.error('유저 정보 불러오기 오류: ', error);
@@ -119,7 +105,6 @@ function Menu({ toggleDrawer }: MenuProps) {
   /**
    * 내가 참여한 설문 페이지로 이동하는 메서드 입니다.
    *
-   * @author 강명관
    */
   const handleClickAttendSurvey = () => {
     /**

@@ -97,7 +97,7 @@ function Main() {
   }, []);
 
   /**
-   * 메인애서 RedirectModal 을 닫는 메서드 입니다.
+   * 메인에서 RedirectModal 을 닫는 메서드 입니다.
    *
    */
   const closeCardModal = () => {
@@ -108,14 +108,14 @@ function Main() {
   const redirectToSurveyNo = sessionStorage.getItem('redirectToSurveyNo');
 
   /**
-   * 설문 참여에 바로 들어왔을때 메인해서 해당 번호를통해 설문의 모달을 보여주기 위해 모달의 정보를 가져오는 메서드 입니다.
+   * 설문 참여에 바로 들어왔을때 메인에서 해당 번호를통해 설문의 모달을 보여주기 위해 모달의 정보를 가져오는 메서드 입니다.
    *
    */
   const fetchSelectedSurveyData = async () => {
     const axiosForRedirectModal = customAxios.create({
       headers: {
         Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        withCredentials: true,
       },
     });
 
